@@ -16,7 +16,7 @@ let package = Package(
       name: "auto-mac-setup",
       dependencies: []),
     .testTarget(
-      name: "auto-mac-setupTests",
+      name: "AutoMacSetupTests",
       dependencies: ["auto-mac-setup"]),
   ]
 )
