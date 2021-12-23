@@ -5,13 +5,14 @@ import class Foundation.Bundle
 @testable import AutoMacSetup
 
 final class MacOSDefaultsTests: XCTestCase {
-    func testKeysReturnExpectedValues() {
-        let sut = MacOSDefaults { _ in
-           return ""
+    func testReadKeyReturnsExpectedValues() {
+        let helloKey: MacOSDefaults.Domain.Key = .init(name: "hello-key", domain: .init(path: "com.welcome.to"))
+        let sut = MacOSDefaults {
+            return $0.joined(separator: " ")
         }
 
-        sut.read(.init(name: "my-key", domain: MacOSDefaults.Domain(path:"com.example.domain.mine")))
+        let response = sut.read(helloKey)
 
-        XCTAssertEqual(response, "Hello, World!")
+        XCTAssertEqual(response, "defaults read com.welcome.to hello-key")
     }
 }

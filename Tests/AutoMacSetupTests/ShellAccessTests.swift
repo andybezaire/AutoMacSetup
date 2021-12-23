@@ -6,8 +6,7 @@ import class Foundation.Bundle
 
 final class ShellAccessTests: XCTestCase {
     func testEcho() {
-        let response = ShellAccess.execute("echo", "Hello, World!")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let response = ShellAccess.execute(["echo", "Hello, World!"])
         XCTAssertEqual(response, "Hello, World!")
     }
 }
